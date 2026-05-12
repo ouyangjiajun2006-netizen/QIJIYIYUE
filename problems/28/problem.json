@@ -1,0 +1,13 @@
+{
+    "id": 28,
+    "title": "数组去重",
+    "description": "输入 n 个整数，去除重复的数字后按原顺序输出。",
+    "inputDesc": "第一行一个整数 n（1 <= n <= 1000）。第二行 n 个整数。",
+    "outputDesc": "一行，去重后的整数序列，用空格分隔。",
+    "sampleInput": "8\n1 2 3 2 1 4 5 3",
+    "sampleOutput": "1 2 3 4 5",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

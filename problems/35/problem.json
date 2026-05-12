@@ -1,0 +1,13 @@
+{
+    "id": 35,
+    "title": "矩阵乘法",
+    "description": "给定两个矩阵 A 和 B，计算它们的乘积 C = A * B。",
+    "inputDesc": "第一行三个整数 n, m, k（1 <= n, m, k <= 100）。接下来 n 行，每行 m 个整数，表示矩阵 A。接下来 m 行，每行 k 个整数，表示矩阵 B。",
+    "outputDesc": "n 行，每行 k 个整数，表示矩阵 C，用空格分隔。",
+    "sampleInput": "2 3 2\n1 2 3\n4 5 6\n1 2\n3 4\n5 6",
+    "sampleOutput": "22 28\n49 64",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

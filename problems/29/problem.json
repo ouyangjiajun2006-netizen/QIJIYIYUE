@@ -1,0 +1,13 @@
+{
+    "id": 29,
+    "title": "进制转换",
+    "description": "将一个十进制正整数转换为八进制数输出。",
+    "inputDesc": "一行，一个整数 n（1 <= n <= 10^9）。",
+    "outputDesc": "一行，n 的八进制表示。",
+    "sampleInput": "100",
+    "sampleOutput": "144",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

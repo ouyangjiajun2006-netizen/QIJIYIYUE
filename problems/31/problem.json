@@ -1,0 +1,13 @@
+{
+    "id": 31,
+    "title": "括号匹配",
+    "description": "输入一个只包含 '('、')'、'['、']'、'{'、'}' 的字符串，判断括号是否匹配。",
+    "inputDesc": "一行，一个字符串，长度不超过 1000。",
+    "outputDesc": "如果括号匹配输出yes，否则输出no。",
+    "sampleInput": "({[]})",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

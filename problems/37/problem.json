@@ -1,0 +1,13 @@
+{
+    "id": 37,
+    "title": "最大子数组和",
+    "description": "给定一个整数数组，找出一个连续子数组，使得子数组元素之和最大，输出这个最大值。",
+    "inputDesc": "第一行一个整数 n（1 <= n <= 10^5）。第二行 n 个整数，每个整数绝对值不超过 10^4。",
+    "outputDesc": "一行，一个整数，表示最大子数组和。",
+    "sampleInput": "9\n-2 1 -3 4 -1 2 1 -5 4",
+    "sampleOutput": "6",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

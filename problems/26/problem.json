@@ -1,0 +1,13 @@
+{
+    "id": 26,
+    "title": "字符串反转",
+    "description": "输入一个字符串，将其反转后输出。",
+    "inputDesc": "一行，一个字符串，长度不超过 1000。",
+    "outputDesc": "一行，反转后的字符串。",
+    "sampleInput": "hello",
+    "sampleOutput": "olleh",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

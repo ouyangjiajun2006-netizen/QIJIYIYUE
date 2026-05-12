@@ -1,0 +1,13 @@
+{
+    "id": 17,
+    "title": "素数判断",
+    "description": "输入一个正整数 n，判断它是否为素数（质数）。",
+    "inputDesc": "一行，一个整数 n（2 <= n <= 10^6）。",
+    "outputDesc": "如果是素数输出yes，否则输出no。",
+    "sampleInput": "17",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

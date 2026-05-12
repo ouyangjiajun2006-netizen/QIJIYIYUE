@@ -1,0 +1,13 @@
+{
+    "id": 22,
+    "title": "水仙花数",
+    "description": "输入一个三位数 n，判断它是否为水仙花数。水仙花数是指一个三位数，其各位数字的立方和等于该数本身。",
+    "inputDesc": "一行，一个整数 n（100 <= n <= 999）。",
+    "outputDesc": "如果是水仙花数输出yes，否则输出no。",
+    "sampleInput": "153",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

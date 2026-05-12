@@ -1,0 +1,13 @@
+{
+    "id": 20,
+    "title": "回文数判断",
+    "description": "输入一个正整数 n，判断它是否为回文数（正着读和倒着读一样）。",
+    "inputDesc": "一行，一个整数 n（1 <= n <= 10^9）。",
+    "outputDesc": "如果是回文数输出yes，否则输出no。",
+    "sampleInput": "12321",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

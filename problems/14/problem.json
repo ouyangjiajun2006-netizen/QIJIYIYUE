@@ -1,0 +1,13 @@
+{
+    "id": 14,
+    "title": "判断闰年",
+    "description": "输入一个年份，判断是否为闰年。闰年的条件：能被4整除但不能被100整除，或者能被400整除。",
+    "inputDesc": "一行，一个整数 year（1 <= year <= 10000）。",
+    "outputDesc": "如果是闰年输出yes，否则输出no。",
+    "sampleInput": "2000",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

@@ -1,0 +1,13 @@
+{
+    "id": 4,
+    "title": "阶乘计算",
+    "description": "输入一个正整数 n，输出 n! 的值。n! = 1 * 2 * 3 * ... * n。",
+    "inputDesc": "一行，一个正整数 n（1 <= n <= 12）。",
+    "outputDesc": "一行，一个整数，表示 n! 的值。",
+    "sampleInput": "5",
+    "sampleOutput": "120",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

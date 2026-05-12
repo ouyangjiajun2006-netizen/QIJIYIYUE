@@ -1,0 +1,13 @@
+{
+    "id": 8,
+    "title": "最大公约数",
+    "description": "输入两个正整数 a 和 b，使用辗转相除法求它们的最大公约数。",
+    "inputDesc": "一行，两个正整数 a 和 b（1 <= a, b <= 10^9），用空格分隔。",
+    "outputDesc": "一行，一个整数，表示 a 和 b 的最大公约数。",
+    "sampleInput": "12 18",
+    "sampleOutput": "6",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

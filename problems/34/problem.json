@@ -1,0 +1,13 @@
+{
+    "id": 34,
+    "title": "约瑟夫环",
+    "description": "n 个人围成一圈，从第一个人开始报数，每报到 m 的人出列，求最后剩下的人的编号。",
+    "inputDesc": "一行，两个整数 n 和 m（1 <= n, m <= 1000）。",
+    "outputDesc": "一行，最后剩下的人的编号。",
+    "sampleInput": "7 3",
+    "sampleOutput": "4",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

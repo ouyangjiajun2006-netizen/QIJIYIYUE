@@ -1,0 +1,13 @@
+{
+    "id": 18,
+    "title": "最大公约数",
+    "description": "输入两个正整数 a 和 b，求它们的最大公约数（GCD）。",
+    "inputDesc": "一行，两个整数 a 和 b，用空格分隔（1 <= a, b <= 10^9）。",
+    "outputDesc": "一行，一个整数，表示 a 和 b 的最大公约数。",
+    "sampleInput": "12 18",
+    "sampleOutput": "6",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

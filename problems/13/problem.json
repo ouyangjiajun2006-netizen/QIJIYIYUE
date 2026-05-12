@@ -1,0 +1,13 @@
+{
+    "id": 13,
+    "title": "十进制转二进制",
+    "description": "输入一个正整数 n，将其转换为二进制数并输出。",
+    "inputDesc": "一行，一个正整数 n（1 <= n <= 10^6）。",
+    "outputDesc": "一行，n 的二进制表示。",
+    "sampleInput": "10",
+    "sampleOutput": "1010",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

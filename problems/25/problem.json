@@ -1,0 +1,13 @@
+{
+    "id": 25,
+    "title": "二分查找",
+    "description": "给定一个升序排列的数组和一个目标值，使用二分查找判断目标值是否在数组中。",
+    "inputDesc": "第一行两个整数 n 和 target（1 <= n <= 10^5）。第二行 n 个升序排列的整数。",
+    "outputDesc": "如果找到输出yes，否则输出no。",
+    "sampleInput": "5 3\n1 2 3 4 5",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

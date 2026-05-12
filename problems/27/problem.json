@@ -1,0 +1,13 @@
+{
+    "id": 27,
+    "title": "统计字符",
+    "description": "输入一个字符串，统计其中英文字母、数字、空格和其他字符的个数。",
+    "inputDesc": "一行，一个字符串，长度不超过 1000。",
+    "outputDesc": "一行，四个整数，分别表示英文字母、数字、空格和其他字符的个数，用空格分隔。",
+    "sampleInput": "Hello 123!",
+    "sampleOutput": "5 3 1 1",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

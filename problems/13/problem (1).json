@@ -1,0 +1,11 @@
+{
+    "id": 13,
+    "title": "约瑟夫问题",
+    "difficulty": "困难",
+    "description": "有 n 个人围成一圈，从第一个人开始报数，数到 m 的人出列，然后从下一个人重新开始报数。输入 n 和 m（1 ≤ n, m ≤ 100），输出出列顺序。",
+    "sampleInput": "5 3",
+    "sampleOutput": "3 1 5 2 4",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

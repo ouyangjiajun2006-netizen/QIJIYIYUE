@@ -1,0 +1,11 @@
+{
+    "id": 7,
+    "title": "数字反转",
+    "difficulty": "简单",
+    "description": "输入一个整数 n（-10^9 ≤ n ≤ 10^9），输出它的反转数。注意：反转后要去掉前导零。例如：-1230 反转后为 -321。",
+    "sampleInput": "-1230",
+    "sampleOutput": "-321",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

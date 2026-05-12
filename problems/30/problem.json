@@ -1,0 +1,13 @@
+{
+    "id": 30,
+    "title": "杨辉三角",
+    "description": "输入一个正整数 n，输出杨辉三角的前 n 行。",
+    "inputDesc": "一行，一个整数 n（1 <= n <= 20）。",
+    "outputDesc": "n 行，杨辉三角的前 n 行，每行数字之间用空格分隔。",
+    "sampleInput": "5",
+    "sampleOutput": "1\n1 1\n1 2 1\n1 3 3 1\n1 4 6 4 1",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}
