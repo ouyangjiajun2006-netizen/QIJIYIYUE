@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyOJ - 在线评测系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 MyOJ - 在线评测系统</h1>
+            <p class="subtitle">提交代码，系统自动评测并返回结果</p>
+        </header>
+
+        <main>
+            <!-- 题目列表 -->
+            <section class="problem-section">
+                <h2>📋 题目列表</h2>
+                <div id="problemList" class="problem-list"></div>
+            </section>
+
+            <!-- 题目详情 -->
+            <section class="detail-section" id="detailSection" style="display: none;">
+                <div class="problem-header">
+                    <h2 id="problemTitle">题目</h2>
+                    <span id="problemDifficulty" class="difficulty">简单</span>
+                </div>
+                <div class="problem-content">
+                    <div class="problem-description">
+                        <h3>📖 题目描述</h3>
+                        <p id="problemDescription"></p>
+                    </div>
+                    <div class="sample-test">
+                        <div class="sample-box">
+                            <h4>📥 样例输入</h4>
+                            <pre id="sampleInput"></pre>
+                        </div>
+                        <div class="sample-box">
+                            <h4>📤 样例输出</h4>
+                            <pre id="sampleOutput"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 代码提交 -->
+                <div class="code-section">
+                    <h3>✏️ 提交代码</h3>
+                    <div class="editor-toolbar">
+                        <label>语言：</label>
+                        <select id="languageSelect">
+                            <option value="cpp">C++</option>
+                            <option value="c">C</option>
+                        </select>
+                        <button id="submitBtn" class="btn-primary" onclick="submitCode()">🚀 提交评测</button>
+                    </div>
+                    <textarea id="codeEditor" placeholder="在此编写你的代码..."></textarea>
+                </div>
+
+                <!-- 评测结果 -->
+                <div class="result-section" id="resultSection" style="display: none;">
+                    <h3>📊 评测结果</h3>
+                    <div id="resultContent" class="result-content"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>MyOJ - 大二期末作业 | 简易在线评测系统</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
