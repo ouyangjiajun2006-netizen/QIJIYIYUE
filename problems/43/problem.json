@@ -1,0 +1,13 @@
+{
+    "id": 43,
+    "title": "二进制中1的个数",
+    "description": "输入一个非负整数 n，输出其二进制表示中 1 的个数（即 popcount）。",
+    "inputDesc": "一行，一个非负整数 n（0 <= n <= 10^9）。",
+    "outputDesc": "一行，一个整数，表示二进制表示中 1 的个数。",
+    "sampleInput": "11",
+    "sampleOutput": "3",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}
