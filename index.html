@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyOJ - 在线评测系统</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 MyOJ - 在线评测系统</h1>
+            <p class="subtitle">提交代码，系统自动评测并返回结果</p>
+            <button class="dark-toggle" onclick="toggleDarkMode()" id="darkToggle" title="切换暗色模式">🌙</button>
+        </header>
+
+        <!-- 用户栏 -->
+        <div class="user-bar" id="userBar">
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="switchTab('problems')">📋 题目</button>
+                <button class="nav-tab" onclick="switchTab('leaderboard')">🏆 排行榜</button>
+                <button class="nav-tab" id="tabHistory" onclick="switchTab('history')" style="display:none">📜 提交历史</button>
+                <button class="nav-tab" id="tabStats" onclick="switchTab('stats')" style="display:none">📊 统计</button>
+            </div>
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span class="user-avatar">👤</span>
+                <span class="user-name" id="userNameDisplay"></span>
+                <button class="btn-logout" onclick="logout()">退出登录</button>
+            </div>
+            <div class="user-actions" id="userActions">
+                <button class="btn-secondary" onclick="showLogin()">登录</button>
+                <button class="btn-secondary" onclick="showRegister()">注册</button>
+            </div>
+        </div>
+
+        <!-- 登录/注册弹窗 -->
+        <div class="modal-overlay" id="authModal" style="display: none;">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeAuthModal()">&times;</span>
+                <h2 id="authModalTitle">登录</h2>
+                <div class="auth-form">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" id="authUsername" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" id="authPassword" placeholder="请输入密码">
+                    </div>
+                    <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                        <label>确认密码</label>
+                        <input type="password" id="authConfirmPassword" placeholder="请再次输入密码">
+                    </div>
+                    <div class="auth-error" id="authError"></div>
+                    <button class="btn-primary btn-full" id="authSubmitBtn" onclick="handleAuth()">登录</button>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <!-- ===== 页面1: 题目列表 ===== -->
+            <div id="pageProblemList" class="page">
+                <!-- 题目列表 -->
+                <section class="problem-section">
+                    <h2>📋 题目列表</h2>
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" class="search-input" placeholder="搜索题目名称..." oninput="filterProblems()">
+                        <select id="difficultyFilter" class="filter-select" onchange="filterProblems()">
+                            <option value="">全部难度</option>
+                            <option value="简单">简单</option>
+                            <option value="中等">中等</option>
+                            <option value="困难">困难</option>
+                        </select>
+                    </div>
+                    <div id="problemList" class="problem-list"></div>
+                    <!-- 分页 -->
+                    <div class="pagination" id="pagination"></div>
+                </section>
+
+                <!-- 已通过题目 -->
+                <section class="problem-section" id="passedSection" style="display: none;">
+                    <h2>🏆 已通过的题目</h2>
+                    <p class="section-desc">以下是你已经通过的题目</p>
+                    <div id="passedProblemList" class="problem-list"></div>
+                </section>
+
+                <!-- 未通过题目 -->
+                <section class="problem-section" id="failedSection" style="display: none;">
+                    <h2>📌 最近未通过的题目</h2>
+                    <p class="section-desc">以下是你提交过但尚未通过的题目，点击可继续挑战</p>
+                    <div id="failedProblemList" class="problem-list"></div>
+                </section>
+            </div>
+
+            <!-- ===== 页面2: 题目详情与提交 ===== -->
+            <div id="pageProblemDetail" class="page" style="display: none;">
+                <button class="btn-back" onclick="goBackToList()">← 返回题目列表</button>
+                
+                <section class="detail-section">
+                    <div class="problem-header">
+                        <h2 id="detailTitle">题目</h2>
+                        <span id="detailDifficulty" class="difficulty">简单</span>
+                    </div>
+                    <div class="problem-content">
+                        <div class="problem-description">
+                            <h3>📖 题目描述</h3>
+                            <p id="detailDescription"></p>
+                        </div>
+                        <div class="problem-limits">
+                            <span>⏱ 时间限制: <strong id="detailTimeLimit"></strong></span>
+                            <span>💾 内存限制: <strong id="detailMemoryLimit"></strong></span>
+                        </div>
+                        <div class="sample-test">
+                            <div class="sample-box">
+                                <h4>📥 样例输入</h4>
+                                <pre id="detailSampleInput"></pre>
+                            </div>
+                            <div class="sample-box">
+                                <h4>📤 样例输出</h4>
+                                <pre id="detailSampleOutput"></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 代码提交 -->
+                    <div class="code-section">
+                        <h3>✏️ 提交代码</h3>
+                        <div class="editor-toolbar">
+                            <label>语言：</label>
+                            <select id="languageSelect">
+                                <option value="cpp">C++</option>
+                                <option value="c">C</option>
+                            </select>
+                            <button id="submitBtn" class="btn-primary" onclick="submitCode()">🚀 提交评测</button>
+                        </div>
+                        <div id="monacoEditor" style="height:350px;border:2px solid #ddd;border-radius:8px;"></div>
+                    </div>
+
+                    <!-- 评测结果 -->
+                    <div class="result-section" id="resultSection" style="display: none;">
+                        <h3>📊 评测结果</h3>
+                        <div class="result-content">
+                            <div class="result-status" id="resultStatus"></div>
+                            <div class="result-detail" id="resultDetail"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===== 页面3: 排行榜 ===== -->
+            <div id="pageLeaderboard" class="page" style="display: none;">
+                <section class="problem-section">
+                    <h2>🏆 排行榜</h2>
+                    <p class="section-desc">按通过题目数量排名</p>
+                    <div id="leaderboardContent">
+                        <div class="loading-spinner" id="leaderboardLoading">加载中...</div>
+                        <div id="leaderboardList" style="display: none;"></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===== 页面5: 统计 ===== -->
+            <div id="pageStats" class="page" style="display: none;">
+                <section class="problem-section">
+                    <h2>📊 我的统计</h2>
+                    <div id="statsOverview" class="stats-overview">
+                        <div class="stat-card" id="statTotal">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">总提交</div>
+                        </div>
+                        <div class="stat-card stat-ac">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">通过</div>
+                        </div>
+                        <div class="stat-card stat-wa">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">未通过</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statRate">0%</div>
+                            <div class="stat-label">通过率</div>
+                        </div>
+                    </div>
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>状态分布</h3>
+                            <div id="statusChart" class="chart-area"></div>
+                        </div>
+                        <div class="chart-container">
+                            <h3>最近提交趋势</h3>
+                            <div id="trendChart" class="chart-area"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ===== 页面4: 提交历史 ===== -->
+            <div id="pageHistory" class="page" style="display: none;">
+                <section class="problem-section">
+                    <h2>📜 提交历史</h2>
+                    <p class="section-desc">最近 20 次提交记录</p>
+                    <div id="historyContent">
+                        <div class="loading-spinner" id="historyLoading">加载中...</div>
+                        <div id="historyList" style="display: none;"></div>
+                        <div id="historyEmpty" style="display: none;" class="empty-state">暂无提交记录</div>
+                    </div>
+                </section>
+                <!-- 历史提交代码查看弹窗 -->
+                <div class="modal-overlay" id="codeModal" style="display: none;">
+                    <div class="modal-content code-modal">
+                        <span class="modal-close" onclick="closeCodeModal()">&times;</span>
+                        <h2 id="codeModalTitle">提交代码</h2>
+                        <pre id="codeModalContent" class="code-display"></pre>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>MyOJ - 大二期末作业 | 简易在线评测系统</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
