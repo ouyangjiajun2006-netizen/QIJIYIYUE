@@ -1,0 +1,16 @@
+{
+    "id": 32,
+    "title": "最长公共前缀",
+    "description": "输入 n 个字符串，找出它们的最长公共前缀。如果没有公共前缀，输出空行。",
+    "inputDesc": "第一行一个整数 n（1 <= n <= 100）。接下来 n 行，每行一个字符串（长度不超过 100，只包含小写英文字母）。",
+    "outputDesc": "一行，最长公共前缀。如果没有公共前缀，输出空行。",
+    "sampleInput": "3
+flower
+flow
+flight",
+    "sampleOutput": "fl",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

@@ -1,0 +1,13 @@
+{
+    "id": 49,
+    "title": "汉诺塔",
+    "description": "汉诺塔问题：有三根柱子 A、B、C，A 柱上有 n 个大小不同的圆盘，大盘在下小盘在上。要求将所有圆盘从 A 柱移动到 C 柱，每次只能移动一个圆盘，且大盘不能放在小盘上面。输出最少的移动次数。",
+    "inputDesc": "一行，一个整数 n（1 <= n <= 30），表示圆盘数量。",
+    "outputDesc": "一行，一个整数，表示最少移动次数。",
+    "sampleInput": "3",
+    "sampleOutput": "7",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

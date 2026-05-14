@@ -1,0 +1,13 @@
+{
+    "id": 23,
+    "title": "完全平方数",
+    "description": "输入一个正整数 n，判断它是否为完全平方数（即存在整数 x 使得 x*x = n）。",
+    "inputDesc": "一行，一个整数 n（1 <= n <= 10^9）。",
+    "outputDesc": "一行，如果是完全平方数输出 yes，否则输出 no。",
+    "sampleInput": "16",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

@@ -1,0 +1,14 @@
+{
+    "id": 24,
+    "title": "冒泡排序",
+    "description": "输入 n 个整数，使用冒泡排序将它们按升序排列并输出。",
+    "inputDesc": "第一行一个整数 n（1 <= n <= 1000）。第二行 n 个整数（绝对值不超过 10^6），用空格分隔。",
+    "outputDesc": "一行，排序后的 n 个整数，从小到大排列，用空格分隔。",
+    "sampleInput": "5
+3 1 4 1 5",
+    "sampleOutput": "1 1 3 4 5",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}

@@ -1,0 +1,11 @@
+{
+    "id": 3,
+    "title": "求最大值",
+    "difficulty": "中等",
+    "description": "输入三个整数，输出其中的最大值。",
+    "sampleInput": "3 7 5",
+    "sampleOutput": "7",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

@@ -1,0 +1,13 @@
+{
+    "id": 15,
+    "title": "阶乘计算",
+    "description": "输入一个正整数 n，计算 n!（n 的阶乘）。n! = 1 × 2 × 3 × ... × n。注意结果可能较大，请使用合适的数据类型。",
+    "inputDesc": "一行，一个整数 n（1 <= n <= 20）。",
+    "outputDesc": "一行，一个整数，表示 n! 的值。",
+    "sampleInput": "5",
+    "sampleOutput": "120",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

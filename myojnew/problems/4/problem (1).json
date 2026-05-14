@@ -1,0 +1,11 @@
+{
+    "id": 4,
+    "title": "阶乘计算",
+    "difficulty": "简单",
+    "description": "输入一个正整数 n（1 ≤ n ≤ 12），输出 n 的阶乘。",
+    "sampleInput": "5",
+    "sampleOutput": "120",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

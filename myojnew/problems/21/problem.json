@@ -1,0 +1,13 @@
+{
+    "id": 21,
+    "title": "数字反转",
+    "description": "输入一个整数 n，将其数字反转后输出。注意处理负号和前导零（反转后去掉前导零）。",
+    "inputDesc": "一行，一个整数 n（-10^9 <= n <= 10^9）。",
+    "outputDesc": "一行，反转后的整数。",
+    "sampleInput": "-1230",
+    "sampleOutput": "-321",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

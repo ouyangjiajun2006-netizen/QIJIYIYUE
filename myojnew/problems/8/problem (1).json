@@ -1,0 +1,11 @@
+{
+    "id": 8,
+    "title": "回文数判断",
+    "difficulty": "简单",
+    "description": "输入一个正整数 n（1 ≤ n ≤ 10^9），判断它是否为回文数（正着读和倒着读一样）。如果是输出 yes，否则输出 no。",
+    "sampleInput": "12321",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

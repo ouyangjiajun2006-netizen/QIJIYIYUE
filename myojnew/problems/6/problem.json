@@ -1,0 +1,13 @@
+{
+    "id": 6,
+    "title": "素数判断",
+    "description": "输入一个正整数 n，判断它是否为素数。素数是指大于 1 且只能被 1 和自身整除的自然数。",
+    "inputDesc": "一行，一个正整数 n（2 <= n <= 10000）。",
+    "outputDesc": "一行，如果是素数输出 yes，否则输出 no。",
+    "sampleInput": "7",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}
