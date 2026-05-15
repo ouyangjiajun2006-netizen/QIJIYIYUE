@@ -127,7 +127,7 @@ function initFallbackEditor() {
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
-    document.getElementById('darkToggle').textContent = isDark ? '☀️' : '🌙';
+    document.getElementById('darkToggle').textContent = isDark ? '🌙' : '✨';
     localStorage.setItem('myoj_dark', isDark ? '1' : '0');
     if (monacoEditor) {
         monaco.editor.setTheme(isDark ? 'vs-dark' : 'vs');
@@ -137,7 +137,7 @@ function toggleDarkMode() {
 function applyDarkMode() {
     if (localStorage.getItem('myoj_dark') === '1') {
         document.body.classList.add('dark-mode');
-        document.getElementById('darkToggle').textContent = '☀️';
+        document.getElementById('darkToggle').textContent = '🌙';
     }
 }
 

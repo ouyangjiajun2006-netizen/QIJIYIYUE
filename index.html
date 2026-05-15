@@ -3,223 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyOJ - 在线评测系统</title>
+    <title>MyOJ</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📝 MyOJ - 在线评测系统</h1>
-            <p class="subtitle">提交代码，系统自动评测并返回结果</p>
-            <button class="dark-toggle" onclick="toggleDarkMode()" id="darkToggle" title="切换暗色模式">🌙</button>
-        </header>
 
-        <!-- 用户栏 -->
-        <div class="user-bar" id="userBar">
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="switchTab('problems')">📋 题目</button>
-                <button class="nav-tab" onclick="switchTab('leaderboard')">🏆 排行榜</button>
-                <button class="nav-tab" id="tabHistory" onclick="switchTab('history')" style="display:none">📜 提交历史</button>
-                <button class="nav-tab" id="tabStats" onclick="switchTab('stats')" style="display:none">📊 统计</button>
+    <!-- ===== Top Bar ===== -->
+    <div class="cf-topbar">
+        <div class="cf-topbar-inner">
+            <div class="cf-logo"><span>My</span>OJ</div>
+            <div class="cf-nav-links">
+                <button class="cf-nav-link active" onclick="switchTab('problems')">题目</button>
+                <button class="cf-nav-link" onclick="switchTab('leaderboard')">排行榜</button>
+                <button class="cf-nav-link" id="tabHistory" onclick="switchTab('history')" style="display:none">提交历史</button>
+                <button class="cf-nav-link" id="tabFailed" onclick="switchTab('failed')" style="display:none">错题</button>
+                <button class="cf-nav-link" id="tabStats" onclick="switchTab('stats')" style="display:none">统计</button>
             </div>
-            <div class="user-info" id="userInfo" style="display: none;">
-                <span class="user-avatar">👤</span>
-                <span class="user-name" id="userNameDisplay"></span>
-                <button class="btn-logout" onclick="logout()">退出登录</button>
-            </div>
-            <div class="user-actions" id="userActions">
-                <button class="btn-secondary" onclick="showLogin()">登录</button>
-                <button class="btn-secondary" onclick="showRegister()">注册</button>
+            <div class="cf-topbar-right">
+                <button class="cf-dark-toggle" onclick="toggleDarkMode()" id="darkToggle" title="切换主题">☽</button>
+                <div class="cf-user-info" id="userInfo" style="display: none;">
+                    <div class="cf-user-avatar" id="userAvatar">U</div>
+                    <span class="cf-username" id="userNameDisplay"></span>
+                    <button class="cf-btn-logout" onclick="logout()">退出</button>
+                </div>
+                <div class="cf-user-actions" id="userActions">
+                    <button class="cf-btn" onclick="showLogin()" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.15);background:transparent;">登录</button>
+                    <button class="cf-btn" onclick="showRegister()" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.15);background:transparent;">注册</button>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- 登录/注册弹窗 -->
-        <div class="modal-overlay" id="authModal" style="display: none;">
-            <div class="modal-content">
-                <span class="modal-close" onclick="closeAuthModal()">&times;</span>
+    <div class="container">
+
+        <!-- ===== Header ===== -->
+        <div class="cf-header">
+            <h1><span>My</span>OJ</h1>
+            <div class="cf-subtitle">编写代码 · 提交评测 · 即时反馈</div>
+        </div>
+
+        <!-- ===== Auth Modal ===== -->
+        <div class="cf-modal-overlay" id="authModal" style="display: none;">
+            <div class="cf-modal">
+                <span class="cf-modal-close" onclick="closeAuthModal()">&times;</span>
                 <h2 id="authModalTitle">登录</h2>
-                <div class="auth-form">
-                    <div class="form-group">
+                <div class="cf-form">
+                    <div class="cf-field">
                         <label>用户名</label>
                         <input type="text" id="authUsername" placeholder="请输入用户名">
                     </div>
-                    <div class="form-group">
+                    <div class="cf-field">
                         <label>密码</label>
                         <input type="password" id="authPassword" placeholder="请输入密码">
                     </div>
-                    <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                    <div class="cf-field" id="confirmPasswordGroup" style="display: none;">
                         <label>确认密码</label>
                         <input type="password" id="authConfirmPassword" placeholder="请再次输入密码">
                     </div>
-                    <div class="auth-error" id="authError"></div>
-                    <button class="btn-primary btn-full" id="authSubmitBtn" onclick="handleAuth()">登录</button>
+                    <div class="cf-error" id="authError"></div>
+                    <button class="cf-btn-primary cf-btn-full" id="authSubmitBtn" onclick="handleAuth()">登录</button>
                 </div>
             </div>
         </div>
 
         <main>
-            <!-- ===== 页面1: 题目列表 ===== -->
+            <!-- ===== 题目列表页 ===== -->
             <div id="pageProblemList" class="page">
-                <!-- 题目列表 -->
-                <section class="problem-section">
-                    <h2>📋 题目列表</h2>
-                    <div class="search-bar">
-                        <input type="text" id="searchInput" class="search-input" placeholder="搜索题目名称..." oninput="filterProblems()">
-                        <select id="difficultyFilter" class="filter-select" onchange="filterProblems()">
+                <div class="cf-card">
+                    <h2>题目列表</h2>
+                    <div class="cf-search">
+                        <input type="text" id="searchInput" class="cf-search-input" placeholder="搜索题目名称..." oninput="filterProblems()">
+                        <select id="difficultyFilter" class="cf-filter" onchange="filterProblems()">
                             <option value="">全部难度</option>
                             <option value="简单">简单</option>
                             <option value="中等">中等</option>
                             <option value="困难">困难</option>
                         </select>
                     </div>
-                    <div id="problemList" class="problem-list"></div>
-                    <!-- 分页 -->
-                    <div class="pagination" id="pagination"></div>
-                </section>
+                    <div id="problemList"></div>
+                    <div class="cf-pagination" id="pagination"></div>
+                </div>
 
-                <!-- 已通过题目 -->
-                <section class="problem-section" id="passedSection" style="display: none;">
-                    <h2>🏆 已通过的题目</h2>
-                    <p class="section-desc">以下是你已经通过的题目</p>
-                    <div id="passedProblemList" class="problem-list"></div>
-                </section>
+                <div class="cf-card" id="passedSection" style="display: none;">
+                    <h2>已通过的题目</h2>
+                    <div class="cf-card-subtitle">以下是你已经通过的题目</div>
+                    <div id="passedProblemList"></div>
+                </div>
 
-                <!-- 未通过题目 -->
-                <section class="problem-section" id="failedSection" style="display: none;">
-                    <h2>📌 最近未通过的题目</h2>
-                    <p class="section-desc">以下是你提交过但尚未通过的题目，点击可继续挑战</p>
-                    <div id="failedProblemList" class="problem-list"></div>
-                </section>
+                <div class="cf-card" id="failedSection" style="display: none;">
+                    <h2>最近未通过的题目</h2>
+                    <div class="cf-card-subtitle">以下是你提交过但尚未通过的题目，点击可继续挑战</div>
+                    <div id="failedProblemList"></div>
+                </div>
             </div>
 
-            <!-- ===== 页面2: 题目详情与提交 ===== -->
+            <!-- ===== 题目详情与提交页 ===== -->
             <div id="pageProblemDetail" class="page" style="display: none;">
-                <button class="btn-back" onclick="goBackToList()">← 返回题目列表</button>
-                
-                <section class="detail-section">
-                    <div class="problem-header">
+                <button class="cf-btn-back" onclick="goBackToList()">← 返回题目列表</button>
+
+                <div class="cf-card">
+                    <div class="cf-problem-header">
                         <h2 id="detailTitle">题目</h2>
-                        <span id="detailDifficulty" class="difficulty">简单</span>
+                        <span id="detailDifficulty" class="cf-tag">简单</span>
                     </div>
-                    <div class="problem-content">
-                        <div class="problem-description">
-                            <h3>📖 题目描述</h3>
-                            <p id="detailDescription"></p>
+
+                    <div class="cf-desc">
+                        <h3>题目描述</h3>
+                        <p id="detailDescription"></p>
+                    </div>
+
+                    <div class="cf-limits">
+                        <span>时间限制: <strong id="detailTimeLimit"></strong></span>
+                        <span>内存限制: <strong id="detailMemoryLimit"></strong></span>
+                    </div>
+
+                    <div class="cf-samples">
+                        <div class="cf-sample-box">
+                            <div class="cf-sample-title">样例输入</div>
+                            <pre id="detailSampleInput"></pre>
                         </div>
-                        <div class="problem-limits">
-                            <span>⏱ 时间限制: <strong id="detailTimeLimit"></strong></span>
-                            <span>💾 内存限制: <strong id="detailMemoryLimit"></strong></span>
-                        </div>
-                        <div class="sample-test">
-                            <div class="sample-box">
-                                <h4>📥 样例输入</h4>
-                                <pre id="detailSampleInput"></pre>
-                            </div>
-                            <div class="sample-box">
-                                <h4>📤 样例输出</h4>
-                                <pre id="detailSampleOutput"></pre>
-                            </div>
+                        <div class="cf-sample-box">
+                            <div class="cf-sample-title">样例输出</div>
+                            <pre id="detailSampleOutput"></pre>
                         </div>
                     </div>
 
-                    <!-- 代码提交 -->
-                    <div class="code-section">
-                        <h3>✏️ 提交代码</h3>
-                        <div class="editor-toolbar">
+                    <div class="cf-editor-section">
+                        <h3>提交代码</h3>
+                        <div class="cf-editor-toolbar">
                             <label>语言：</label>
                             <select id="languageSelect">
                                 <option value="cpp">C++</option>
                                 <option value="c">C</option>
                             </select>
-                            <button id="submitBtn" class="btn-primary" onclick="submitCode()">🚀 提交评测</button>
+                            <button id="submitBtn" class="cf-btn-primary" onclick="submitCode()">提交评测</button>
                         </div>
-                        <div id="monacoEditor" style="height:350px;border:2px solid #ddd;border-radius:8px;"></div>
+                        <div id="monacoEditor" style="height:350px;border:1px solid var(--cf-border);border-radius:4px;"></div>
                     </div>
 
-                    <!-- 评测结果 -->
-                    <div class="result-section" id="resultSection" style="display: none;">
-                        <h3>📊 评测结果</h3>
-                        <div class="result-content">
-                            <div class="result-status" id="resultStatus"></div>
-                            <div class="result-detail" id="resultDetail"></div>
-                        </div>
+                    <div class="cf-result" id="resultSection" style="display: none;">
+                        <div class="cf-result-header" id="resultStatus"></div>
+                        <div class="cf-result-detail" id="resultDetail"></div>
                     </div>
-                </section>
+                </div>
             </div>
 
-            <!-- ===== 页面3: 排行榜 ===== -->
+            <!-- ===== 排行榜页 ===== -->
             <div id="pageLeaderboard" class="page" style="display: none;">
-                <section class="problem-section">
-                    <h2>🏆 排行榜</h2>
-                    <p class="section-desc">按通过题目数量排名</p>
+                <div class="cf-card">
+                    <h2>排行榜</h2>
+                    <div class="cf-card-subtitle">按通过题目数量排名</div>
                     <div id="leaderboardContent">
-                        <div class="loading-spinner" id="leaderboardLoading">加载中...</div>
+                        <div class="cf-loading" id="leaderboardLoading">加载中...</div>
                         <div id="leaderboardList" style="display: none;"></div>
                     </div>
-                </section>
+                </div>
             </div>
 
-            <!-- ===== 页面5: 统计 ===== -->
+            <!-- ===== 统计页 ===== -->
             <div id="pageStats" class="page" style="display: none;">
-                <section class="problem-section">
-                    <h2>📊 我的统计</h2>
-                    <div id="statsOverview" class="stats-overview">
-                        <div class="stat-card" id="statTotal">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">总提交</div>
+                <div class="cf-card">
+                    <h2>我的统计</h2>
+                    <div id="statsOverview" class="cf-stats-grid">
+                        <div class="cf-stat-card" id="statTotal">
+                            <div class="cf-stat-num">0</div>
+                            <div class="cf-stat-label">总提交</div>
                         </div>
-                        <div class="stat-card stat-ac">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">通过</div>
+                        <div class="cf-stat-card ac">
+                            <div class="cf-stat-num">0</div>
+                            <div class="cf-stat-label">通过</div>
                         </div>
-                        <div class="stat-card stat-wa">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">未通过</div>
+                        <div class="cf-stat-card wa">
+                            <div class="cf-stat-num">0</div>
+                            <div class="cf-stat-label">未通过</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number" id="statRate">0%</div>
-                            <div class="stat-label">通过率</div>
+                        <div class="cf-stat-card">
+                            <div class="cf-stat-num" id="statRate">0%</div>
+                            <div class="cf-stat-label">通过率</div>
                         </div>
                     </div>
-                    <div class="charts-row">
-                        <div class="chart-container">
+                    <div class="cf-charts">
+                        <div class="cf-chart-box">
                             <h3>状态分布</h3>
-                            <div id="statusChart" class="chart-area"></div>
+                            <div id="statusChart" class="cf-chart-area"></div>
                         </div>
-                        <div class="chart-container">
+                        <div class="cf-chart-box">
                             <h3>最近提交趋势</h3>
-                            <div id="trendChart" class="chart-area"></div>
+                            <div id="trendChart" class="cf-chart-area"></div>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
 
-            <!-- ===== 页面4: 提交历史 ===== -->
+            <!-- ===== 错题页 ===== -->
+            <div id="pageFailed" class="page" style="display: none;">
+                <div class="cf-card">
+                    <h2>未通过的题目</h2>
+                    <div class="cf-card-subtitle">提交过但尚未通过的题目，点击可继续挑战</div>
+                    <div id="failedFullList"></div>
+                    <div id="failedEmpty" class="cf-empty">暂无未通过的题目</div>
+                </div>
+            </div>
+
+            <!-- ===== 提交历史页 ===== -->
             <div id="pageHistory" class="page" style="display: none;">
-                <section class="problem-section">
-                    <h2>📜 提交历史</h2>
-                    <p class="section-desc">最近 20 次提交记录</p>
+                <div class="cf-card">
+                    <h2>提交历史</h2>
+                    <div class="cf-card-subtitle">最近 20 次提交记录</div>
                     <div id="historyContent">
-                        <div class="loading-spinner" id="historyLoading">加载中...</div>
+                        <div class="cf-loading" id="historyLoading">加载中...</div>
                         <div id="historyList" style="display: none;"></div>
-                        <div id="historyEmpty" style="display: none;" class="empty-state">暂无提交记录</div>
+                        <div id="historyEmpty" style="display: none;" class="cf-empty">暂无提交记录</div>
                     </div>
-                </section>
-                <!-- 历史提交代码查看弹窗 -->
-                <div class="modal-overlay" id="codeModal" style="display: none;">
-                    <div class="modal-content code-modal">
-                        <span class="modal-close" onclick="closeCodeModal()">&times;</span>
+                </div>
+                <div class="cf-modal-overlay" id="codeModal" style="display: none;">
+                    <div class="cf-modal cf-code-modal">
+                        <span class="cf-modal-close" onclick="closeCodeModal()">&times;</span>
                         <h2 id="codeModalTitle">提交代码</h2>
-                        <pre id="codeModalContent" class="code-display"></pre>
+                        <pre id="codeModalContent" class="cf-code-display"></pre>
                     </div>
                 </div>
             </div>
         </main>
 
-        <footer>
-            <p>MyOJ - 大二期末作业 | 简易在线评测系统</p>
-        </footer>
+        <div class="cf-footer">
+            MyOJ - 在线评测系统
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
