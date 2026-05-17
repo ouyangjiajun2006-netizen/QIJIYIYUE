@@ -14,7 +14,7 @@ const string FRONTEND_DIR = BASE_DIR;
 // ===== MySQL 配置 =====
 const string DB_HOST = "127.0.0.1";
 const int DB_PORT = 3306;
-const string DB_USER = "root";
+const string DB_USER = "ojuser";
 const string DB_PASS = "Asd123789!";
 const string DB_NAME = "myoj";
 

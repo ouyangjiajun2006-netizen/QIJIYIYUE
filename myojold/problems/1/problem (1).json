@@ -1,0 +1,11 @@
+{
+    "id": 1,
+    "title": "A + B 问题",
+    "difficulty": "简单",
+    "description": "输入两个整数 a 和 b，输出它们的和。",
+    "sampleInput": "1 2",
+    "sampleOutput": "3",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

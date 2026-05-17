@@ -1,0 +1,13 @@
+{
+    "id": 44,
+    "title": "数字之和",
+    "description": "输入一个正整数 n，求其各位数字之和。",
+    "inputDesc": "一行，一个整数 n（1 <= n <= 10^9）。",
+    "outputDesc": "一行，一个整数，表示 n 的各位数字之和。",
+    "sampleInput": "1234",
+    "sampleOutput": "10",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

@@ -1,0 +1,5 @@
+{
+  "hooks": {
+    "stop": "powershell -NoProfile -ExecutionPolicy Bypass -File .claude/hooks/stop.ps1"
+  }
+}

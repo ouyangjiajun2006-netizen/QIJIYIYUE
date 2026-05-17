@@ -1,0 +1,11 @@
+{
+    "id": 10,
+    "title": "最小公倍数",
+    "difficulty": "中等",
+    "description": "输入两个正整数 a 和 b（1 ≤ a, b ≤ 10^6），输出它们的最小公倍数（LCM）。",
+    "sampleInput": "12 18",
+    "sampleOutput": "36",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

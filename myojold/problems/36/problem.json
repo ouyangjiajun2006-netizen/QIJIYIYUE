@@ -1,0 +1,14 @@
+{
+    "id": 36,
+    "title": "最长递增子序列",
+    "description": "给定一个整数数组，找出其中最长的严格递增子序列的长度（LIS）。子序列不要求连续，但元素的相对顺序不能改变。",
+    "inputDesc": "第一行一个整数 n（1 <= n <= 1000）。第二行 n 个整数（绝对值不超过 10^6），用空格分隔。",
+    "outputDesc": "一行，一个整数，表示最长严格递增子序列的长度。",
+    "sampleInput": "8
+10 9 2 5 3 7 101 18",
+    "sampleOutput": "4",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "困难",
+    "testCases": 3
+}

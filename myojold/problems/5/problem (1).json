@@ -1,0 +1,11 @@
+{
+    "id": 5,
+    "title": "斐波那契数列",
+    "difficulty": "中等",
+    "description": "输入一个正整数 n（1 ≤ n ≤ 30），输出斐波那契数列的第 n 项。斐波那契数列定义：F(1)=1, F(2)=1, F(n)=F(n-1)+F(n-2)。",
+    "sampleInput": "6",
+    "sampleOutput": "8",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

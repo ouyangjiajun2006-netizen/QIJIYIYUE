@@ -104,16 +104,16 @@ struct MYSQL_CONN {
 
 MYSQL_CONN* dbConnect() {
     if (!initMySQL()) return NULL;
-    
+
     void* conn = mysql_init_fn(NULL);
     if (conn == NULL) {
         cerr << "mysql_init 失败" << endl;
         return NULL;
     }
-    
+
     int timeout = 5;
     mysql_options_fn(conn, MYSQL_OPT_CONNECT_TIMEOUT, &timeout);
-    
+
     void* result = mysql_real_connect_fn(conn, DB_HOST.c_str(), DB_USER.c_str(), DB_PASS.c_str(),
                                          DB_NAME.c_str(), DB_PORT, NULL, 0);
     if (result == NULL) {
@@ -121,9 +121,9 @@ MYSQL_CONN* dbConnect() {
         mysql_close_fn(conn);
         return NULL;
     }
-    
+
     mysql_set_character_set_fn(conn, "utf8mb4");
-    
+
     MYSQL_CONN* mc = new MYSQL_CONN;
     mc->conn = conn;
     mc->valid = true;
@@ -260,7 +260,7 @@ string getUserProblems(int uid) {
             
             string problemJson = config;
             if (problemJson.length() > 0 && problemJson[0] == '{') {
-                problemJson.insert(1, "\"lastStatus\":\"" + lastStatus + "\",\"lastTime\":\"" + lastTime + "\",");
+                problemJson.insert(1, "\"lastStatus\":\"" + escapeJson(lastStatus) + "\",\"lastTime\":\"" + escapeJson(lastTime) + "\",");
             }
             json += problemJson;
             first = false;
@@ -386,7 +386,7 @@ string getFailedProblems(int uid) {
             
             string problemJson = config;
             if (problemJson.length() > 0 && problemJson[0] == '{') {
-                problemJson.insert(1, "\"lastStatus\":\"" + lastStatus + "\",\"lastTime\":\"" + lastTime + "\",");
+                problemJson.insert(1, "\"lastStatus\":\"" + escapeJson(lastStatus) + "\",\"lastTime\":\"" + escapeJson(lastTime) + "\",");
             }
             json += problemJson;
             first = false;

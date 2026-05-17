@@ -1,0 +1,11 @@
+{
+    "id": 12,
+    "title": "字符串统计",
+    "difficulty": "简单",
+    "description": "输入一个字符串（长度不超过 1000），统计其中大写字母、小写字母、数字和其他字符的个数，按顺序输出。",
+    "sampleInput": "Hello123!",
+    "sampleOutput": "1 4 3 1",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

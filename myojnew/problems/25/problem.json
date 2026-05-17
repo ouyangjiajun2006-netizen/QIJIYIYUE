@@ -1,12 +1,11 @@
 {
     "id": 25,
-    "title": "二分查找",
-    "description": "给定一个升序排列的数组和一个目标值，使用二分查找判断目标值是否在数组中。",
-    "inputDesc": "第一行两个整数 n 和 target（1 <= n <= 10^5, -10^9 <= target <= 10^9）。第二行 n 个升序排列的整数（绝对值不超过 10^9）。",
-    "outputDesc": "一行，如果找到输出 yes，否则输出 no。",
-    "sampleInput": "5 3
-1 2 3 4 5",
-    "sampleOutput": "yes",
+    "title": "搜索插入位置",
+    "description": "给定一个升序排列的整数数组和一个目标值，如果目标值在数组中，返回其下标（从1开始）。如果不在，返回它应该被插入的位置下标（从1开始）。",
+    "inputDesc": "第一行两个整数 n 和 target（1 <= n <= 10^5, -10^9 <= target <= 10^9）。第二行 n 个升序排列的整数（绝对值不超过 10^9），用空格分隔。",
+    "outputDesc": "一行，一个整数，表示目标值在数组中的位置或应插入的位置（从1开始）。",
+    "sampleInput": "4 5\n1 3 5 6",
+    "sampleOutput": "3",
     "timeLimit": 1000,
     "memoryLimit": 256,
     "difficulty": "中等",

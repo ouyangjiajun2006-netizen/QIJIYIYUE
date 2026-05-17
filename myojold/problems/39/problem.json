@@ -1,0 +1,13 @@
+{
+    "id": 39,
+    "title": "回文数判断",
+    "description": "给定一个整数 x，判断它是否是回文数。回文数是指正序和倒序读都一样的整数。注意：负数不是回文数。",
+    "inputDesc": "一行，一个整数 x（-2^31 <= x <= 2^31-1，即 int32 范围）。",
+    "outputDesc": "一行，如果是回文数输出 yes，否则输出 no。",
+    "sampleInput": "121",
+    "sampleOutput": "yes",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "简单",
+    "testCases": 3
+}

@@ -1,15 +1,11 @@
 {
     "id": 30,
-    "title": "杨辉三角",
-    "description": "输入一个正整数 n，输出杨辉三角的前 n 行。杨辉三角第 i 行第 j 个数为 C(i-1, j-1)，即组合数。",
-    "inputDesc": "一行，一个整数 n（1 <= n <= 20）。",
-    "outputDesc": "n 行，杨辉三角的前 n 行，每行数字之间用空格分隔。",
-    "sampleInput": "5",
-    "sampleOutput": "1
-1 1
-1 2 1
-1 3 3 1
-1 4 6 4 1",
+    "title": "买卖股票的最佳时机",
+    "description": "给定一个数组，第 i 个元素表示某只股票第 i 天的价格。只允许完成一笔交易（买入一次、卖出一次），求能获得的最大利润。如果不能获得任何利润，输出 0。",
+    "inputDesc": "第一行一个整数 n（2 <= n <= 10^5）。第二行 n 个整数 prices[i]（1 <= prices[i] <= 10^4），用空格分隔。",
+    "outputDesc": "一行，一个整数，表示最大利润。",
+    "sampleInput": "6\n7 1 5 3 6 4",
+    "sampleOutput": "5",
     "timeLimit": 1000,
     "memoryLimit": 256,
     "difficulty": "中等",

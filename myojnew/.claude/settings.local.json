@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(Select-Object -First 50)",
-      "PowerShell(Test-Path \"C:\\\\Users\\\\Admin\\\\.claude\"; $env:USERPROFILE; Test-Path \"C:\\\\Users\\\\dsa\\\\.claude\")"
+      "PowerShell(Test-Path \"C:\\\\Users\\\\Admin\\\\.claude\"; $env:USERPROFILE; Test-Path \"C:\\\\Users\\\\dsa\\\\.claude\")",
+      "Bash(Get-ChildItem -Path D:\\\\myojnew -Depth 1)",
+      "Bash(Select-Object Mode, Length, Name)",
+      "Bash(Format-Table -AutoSize)"
     ]
   }
 }

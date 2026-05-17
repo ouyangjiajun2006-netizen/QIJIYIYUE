@@ -1,0 +1,11 @@
+{
+    "id": 9,
+    "title": "最大公约数",
+    "difficulty": "中等",
+    "description": "输入两个正整数 a 和 b（1 ≤ a, b ≤ 10^9），输出它们的最大公约数（GCD）。",
+    "sampleInput": "12 18",
+    "sampleOutput": "6",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

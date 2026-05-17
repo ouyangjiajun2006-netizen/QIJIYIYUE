@@ -4,9 +4,7 @@
     "description": "给定两个升序排列的数组，将它们合并为一个升序数组并输出。",
     "inputDesc": "第一行两个整数 n 和 m（1 <= n, m <= 1000）。第二行 n 个升序整数（绝对值不超过 10^9）。第三行 m 个升序整数（绝对值不超过 10^9）。",
     "outputDesc": "一行，合并后的升序数组，用空格分隔。",
-    "sampleInput": "3 4
-1 3 5
-2 4 6 8",
+    "sampleInput": "3 4\n1 3 5\n2 4 6 8",
     "sampleOutput": "1 2 3 4 5 6 8",
     "timeLimit": 1000,
     "memoryLimit": 256,

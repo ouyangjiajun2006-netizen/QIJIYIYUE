@@ -68,17 +68,50 @@ void sendResponse(SOCKET client, const string& content, const string& contentTyp
     send(client, response.c_str(), response.length(), 0);
 }
 
+// 读取完整 HTTP 请求（处理分块到达）
+string readFullRequest(SOCKET client) {
+    char buffer[65536];
+    string request;
+    int totalReceived = 0;
+
+    while (totalReceived < (int)sizeof(buffer) - 1) {
+        int bytesReceived = recv(client, buffer + totalReceived,
+                                 sizeof(buffer) - 1 - totalReceived, 0);
+        if (bytesReceived <= 0) return "";
+        totalReceived += bytesReceived;
+        buffer[totalReceived] = '\0';
+        request = string(buffer, totalReceived);
+
+        // 检查头部是否完整
+        size_t headerEnd = request.find("\r\n\r\n");
+        if (headerEnd == string::npos) continue;
+
+        // 查找 Content-Length 判断是否需要继续读取 body
+        size_t clPos = request.find("Content-Length: ");
+        if (clPos == string::npos) clPos = request.find("content-length: ");
+        if (clPos == string::npos) break; // 无 body，请求完整
+
+        clPos = request.find(':', clPos) + 1;
+        while (clPos < request.length() && request[clPos] == ' ') clPos++;
+        string clStr;
+        while (clPos < request.length() && isdigit(request[clPos]))
+            clStr += request[clPos++];
+        int contentLength = stoi(clStr);
+        int bodyStart = (int)(headerEnd + 4);
+
+        if (totalReceived >= bodyStart + contentLength) break;
+        // body 未收完，继续 recv
+    }
+    return request;
+}
+
 // 处理客户端请求
 void handleClient(SOCKET client) {
-    char buffer[65536];
-    int bytesReceived = recv(client, buffer, sizeof(buffer) - 1, 0);
-    if (bytesReceived <= 0) {
+    string request = readFullRequest(client);
+    if (request.empty()) {
         closesocket(client);
         return;
     }
-    buffer[bytesReceived] = '\0';
-    
-    string request(buffer);
     
     // CORS 预检
     if (request.find("OPTIONS") == 0) {

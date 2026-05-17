@@ -1,0 +1,11 @@
+{
+    "id": 2,
+    "title": "判断奇偶数",
+    "difficulty": "简单",
+    "description": "输入一个整数，判断它是奇数还是偶数。如果是奇数，输出 odd；如果是偶数，输出 even。",
+    "sampleInput": "5",
+    "sampleOutput": "odd",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "testCases": 3
+}

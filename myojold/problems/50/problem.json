@@ -1,0 +1,13 @@
+{
+    "id": 50,
+    "title": "素数筛法",
+    "description": "给定一个正整数 n，使用埃拉托斯特尼筛法（Sieve of Eratosthenes）求出 2 到 n 之间所有素数的个数。",
+    "inputDesc": "一行，一个整数 n（2 <= n <= 10^6）。",
+    "outputDesc": "一行，一个整数，表示 2 到 n 之间素数的个数。",
+    "sampleInput": "10",
+    "sampleOutput": "4",
+    "timeLimit": 1000,
+    "memoryLimit": 256,
+    "difficulty": "中等",
+    "testCases": 3
+}
